@@ -1,7 +1,7 @@
-import React from 'react';
-import Link from 'next/link'
 
-const BlogPage = () => {
+import React from 'react';
+
+const BlogDetails = async ({ params }) => {
 
     const datas = [
         {
@@ -32,21 +32,20 @@ const BlogPage = () => {
     ];
 
 
+    // const { slug } = React.use(params)  or  using asynic await
+
+    const { slug } = await params;
+
+    console.log(slug)
+
+    const matched = datas.find(data => data.slug === slug)
 
     return (
-        <div className='p-14'>
-            {
-                datas.map(data => (
-                    <div
-                    key={data?.slug}
-                     className='border-2 border-green-500'>
-                        <h1>{data?.title}</h1>
-                        <button type='button' className='p-2 bg-yellow-200'><Link href={`/blog/${data?.slug}`}>View Details</Link></button>
-                    </div>
-                ))
-            }
+        <div>
+            <h1>{matched?.title}</h1>
+            <h2>{matched?.short_description}</h2>
         </div>
     );
 };
 
-export default BlogPage;
+export default BlogDetails;

@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 
 const NavBar = () => {
     const pathName = usePathname();
-    console.log(pathName)
+    // console.log(pathName)
 
 
     return (
