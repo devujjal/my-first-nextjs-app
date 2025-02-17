@@ -1,6 +1,8 @@
 import Link from "next/link"
 
 const AboutPage = () => {
+    // console.log(wechat);
+
     return (
         <div className="text-center">
             <div>
