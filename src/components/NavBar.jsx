@@ -47,7 +47,7 @@ const NavBar = () => {
 
     console.log(pathName)
     if (!pathName.includes('menu')) {
-        <div className="bg-yellow-400">
+      return  <div className="bg-yellow-400">
             <ul className="flex justify-center gap-5 py-3">
                 <li><Link href={'/'} className={`${pathName === '/' && 'text-black font-bold'}`}>Home</Link></li>
                 <li><Link href={'/about'} className={`${pathName === '/about' && 'text-black font-bold'}`}>About</Link></li>

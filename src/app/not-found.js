@@ -1,12 +1,14 @@
+import Link from 'next/link';
 import React from 'react';
 
-const NotFoundPage = () => {
+const MenuNotFound = () => {
     return (
         <div>
-            <h2>Hey, are you mad?</h2>
-            <p>Page Not Found</p>
-        </div>
+        <h2>Not Found</h2>
+        <p>Could not find requested resource</p>
+        <Link href="/">Return Home</Link>
+      </div>
     );
 };
 
-export default NotFoundPage;
+export default MenuNotFound;
