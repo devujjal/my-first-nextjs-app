@@ -1,40 +1,31 @@
-// import React from 'react';
-// import { NextResponse } from 'next/server'
-
-// const middleware = (request) => {
-//     console.log(request.url)
-//     return NextResponse.redirect(new URL('/', request.url))
-// };
-
-// export const config = {
-//     matcher: ['/about/:path*','/contact/:path*']
-// }
-
-// export default middleware;
-
-
-import { NextResponse } from "next/server";
+import { NextResponse } from 'next/server';
 
 const middleware = (request) => {
-    console.log('PathName: ', request.nextUrl.pathname.startsWith('/blog'))
 
-    const userData = {
-        role: 'user'
+    const user = {
+        role: 'admin'
     }
 
-    const isPathName = request.nextUrl.pathname.startsWith('/blog');
-    const isAdmin = userData?.role === 'admin';
-    const cookies = request.cookies.get('token');
-    console.log(cookies)
+    const isAdmin = user?.role === 'admin';
+
+    const rightPath = request.nextUrl.pathname.endsWith('dashboard')
+
+    const cookie = request.cookies.get('token');
 
 
 
-    if (isPathName && !isAdmin) {
-        return NextResponse.redirect(new URL('/login', request.url))
+    // if (rightPath && !isAdmin) {
+    //     return NextResponse.redirect(new URL('/login', request.url))
+    // }
+
+    if(rightPath && !cookie){
+        return NextResponse.redirect(new URL('login', request.url))
     }
 
-    return NextResponse.next()
 
-}
+    return NextResponse.next();
+
+
+};
 
 export default middleware;
